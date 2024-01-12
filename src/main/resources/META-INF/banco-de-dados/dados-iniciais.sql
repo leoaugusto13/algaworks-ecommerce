@@ -1,1 +1,3 @@
 insert into Produto (id, nome, preco, descricao) values (1, 'Kindle', 499.0, 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.');
+insert into Produto (id, nome, preco, descricao) values (2, 'Teclado RedDragon', 160.0, 'Teclado mecânico RedDragon para Games');
+insert into Produto (id, nome, preco, descricao) values (3, 'Microsoft XBox One S', 1200.0, 'Melhor video game da Microsoft!');

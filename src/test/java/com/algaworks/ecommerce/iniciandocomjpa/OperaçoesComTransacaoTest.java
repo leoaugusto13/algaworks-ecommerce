@@ -13,10 +13,10 @@ public class OperaçoesComTransacaoTest extends EntityManagerTest {
     public void insertObject(){
 
         Produto produto = new Produto();
-        produto.setId(2);
-        produto.setNome("Teclado RedDragon");
-        produto.setDescricao("Teclado mecânico RedDragon para Games");
-        produto.setPreco(new BigDecimal(160.00));
+        produto.setId(3);
+        produto.setNome("Iphone XR");
+        produto.setDescricao("O melhor Iphone de todos os tempos!");
+        produto.setPreco(new BigDecimal(2500.0));
 
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
@@ -26,6 +26,22 @@ public class OperaçoesComTransacaoTest extends EntityManagerTest {
 
         Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
         Assertions.assertNotNull(produtoVerificacao);
+    }
+
+
+    @Test
+    public void deleteObject(){
+
+        Produto produto = entityManager.find(Produto.class, 3);
+
+        entityManager.getTransaction().begin();
+        entityManager.remove(produto);
+        entityManager.getTransaction().commit();
+
+//        entityManager.clear(); Não é necessário na asserção para operação de remoção.
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, 3);
+        Assertions.assertNull(produtoVerificacao);
     }
 
     @Test

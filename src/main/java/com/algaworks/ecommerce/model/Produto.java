@@ -11,9 +11,9 @@ public class Produto {
     @Id
     private Integer Id;
 
-    private String descricao;
-
     private String nome;
+
+    private String descricao;
 
     private BigDecimal preco;
 
