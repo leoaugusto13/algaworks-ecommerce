@@ -1,12 +1,10 @@
 package com.algaworks.ecommerce.iniciandocomjpa;
 
+import com.algaworks.ecommerce.model.Produto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 
 public class ConsultandoRegistrosTest {
 
@@ -32,5 +30,24 @@ public class ConsultandoRegistrosTest {
     @AfterEach
     public void tearDown(){
         entityManagerFactory.close();
+    }
+
+    @Test
+    public void searchById(){
+        Produto produto = entityManager.getReference(Produto.class, 1);
+
+        Assertions.assertNotNull(produto);
+        Assertions.assertEquals("Kindle", produto.getNome());
+
+    }
+
+    @Test
+    public void updateReferenceProduct(){
+        Produto produto = entityManager.find(Produto.class, 1);
+        produto.setNome("Processador Ryzen");
+
+        entityManager.refresh(produto);
+
+        Assertions.assertEquals("Kindle", produto.getNome());
     }
 }
