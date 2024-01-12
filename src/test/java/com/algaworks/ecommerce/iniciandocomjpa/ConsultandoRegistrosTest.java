@@ -1,36 +1,10 @@
 package com.algaworks.ecommerce.iniciandocomjpa;
 
+import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.*;
 
-public class ConsultandoRegistrosTest {
-
-    private static EntityManagerFactory entityManagerFactory;
-
-    private static EntityManager entityManager;
-
-    @BeforeAll()
-    public static void setupBeforeAll(){
-        entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
-    }
-
-    @AfterAll
-    public static void tearDownAfterAll(){
-        entityManagerFactory.close();
-    }
-
-    @BeforeEach
-    public void setUp(){
-        entityManager = entityManagerFactory.createEntityManager();
-    }
-
-    @AfterEach
-    public void tearDown(){
-        entityManagerFactory.close();
-    }
+public class ConsultandoRegistrosTest extends EntityManagerTest {
 
     @Test
     public void searchById(){
@@ -50,4 +24,6 @@ public class ConsultandoRegistrosTest {
 
         Assertions.assertEquals("Kindle", produto.getNome());
     }
+
+
 }

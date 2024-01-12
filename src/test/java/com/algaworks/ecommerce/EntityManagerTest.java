@@ -22,13 +22,13 @@ public class EntityManagerTest {
     }
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
     @AfterEach
-    public void tearDown(){
-        entityManagerFactory.close();
+    public void tearDown() {
+        entityManager.close();
     }
 
 
